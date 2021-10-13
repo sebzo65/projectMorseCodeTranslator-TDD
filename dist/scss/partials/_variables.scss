@@ -1,0 +1,9 @@
+$blue-color: #114b5f;
+$beige-color: #f3e9d2;
+$brown-color: #ded29e;
+
+@mixin flex-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/css/main.css" />
+    <script src="dist/js/scripts.js" defer></script>
+    <title>Morse Code Project</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header__title">Morse Code Translator</h1>
+    </header>
+    <section class="form">
+      <h3 class="form__title">Translate a Message</h3>
+      <label for="form__input"></label>
+      <textarea
+        class="form__input"
+        placeholder="Type your message here: In English, or in Morse Code, using 
+        '.', '-', separating letters with spaces, and words with '/'."
+      ></textarea>
+      <button class="form__button">Translate</button>
+      <label for="form__output"></label>
+      <textarea class="form__output" disabled></textarea>
+    </section>
+  </body>
+</html>

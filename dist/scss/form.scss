@@ -1,0 +1,53 @@
+@use "./partials/variables";
+
+.form {
+  @include variables.flex-style;
+  flex-direction: column;
+  border: 1px solid black;
+  background-color: variables.$blue-color;
+  color: variables.$beige-color;
+  height: 90vh;
+
+  &__title {
+    margin-bottom: 10px;
+  }
+
+  &__input {
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0.4em;
+    padding-right: 0.4em;
+    background-color: variables.$beige-color;
+    width: 90%;
+    height: 50%;
+    padding: 1%;
+    color: variables.$blue-color;
+    font-size: 2em;
+  }
+
+  &__button {
+    width: 140px;
+    height: 40px;
+    margin: 10px 0;
+    border: 3px solid variables.$beige-color;
+    background-color: variables.$blue-color;
+    color: variables.$beige-color;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 16px;
+
+    &:hover {
+      background-color: variables.$beige-color;
+      color: variables.$blue-color;
+    }
+  }
+
+  &__output {
+    background-color: variables.$beige-color;
+    width: 90%;
+    height: 50%;
+    padding: 2%;
+    color: variables.$blue-color;
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+}

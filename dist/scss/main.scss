@@ -1,0 +1,19 @@
+@use "./partials/variables";
+@use "./form.scss";
+
+body {
+  background-color: variables.$brown-color;
+}
+
+.header {
+  @include variables.flex-style;
+  flex-direction: column;
+  border: 2px solid variables.$blue-color;
+  background-color: variables.$beige-color;
+  color: variables.$blue-color;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-bottom: 5px;
+  &__title {
+    font-size: 2em;
+  }
+}
