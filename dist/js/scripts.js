@@ -57,7 +57,7 @@ const ALPHABET = {
 };
 
 //Reverse keys and values in object above
-export const reverseObject = Object.assign(
+const reverseObject = Object.assign(
   {},
   ...Object.entries(ALPHABET).map(([a, b]) => ({ [b]: a }))
 );
@@ -66,7 +66,7 @@ reverseObject["/"] = " ";
 console.log(reverseObject);
 
 //Function to convert English to Morse Code
-export const EngToMorse = (eng, ALPHABET) => {
+const EngToMorse = (eng, ALPHABET) => {
   let engInput = eng.value;
 
   const letterArr = engInput.toLowerCase().split("");
@@ -81,7 +81,7 @@ export const EngToMorse = (eng, ALPHABET) => {
   return morseResult;
 };
 //Function to convert Morse Code to English
-export const MorseToEng = (morse, reverseObject) => {
+const MorseToEng = (morse, reverseObject) => {
   let morseInput = morse.value;
 
   const morseArr = morseInput.split(" "); // array of letters
@@ -121,3 +121,5 @@ clearButton.addEventListener("click", () => {
   inputMorse.value = null;
   formOutput.value = null;
 });
+
+export { ALPHABET, reverseObject, EngToMorse, MorseToEng };
