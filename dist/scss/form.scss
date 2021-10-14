@@ -12,20 +12,49 @@
     margin-bottom: 10px;
   }
 
-  &__input {
+  &__input--Eng {
     padding-left: 0;
     padding-top: 0;
     padding-bottom: 0.4em;
     padding-right: 0.4em;
     background-color: variables.$beige-color;
     width: 90%;
-    height: 50%;
+    height: 30%;
     padding: 1%;
     color: variables.$blue-color;
     font-size: 2em;
   }
 
-  &__button {
+  &__input--Morse {
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0.4em;
+    padding-right: 0.4em;
+    background-color: variables.$beige-color;
+    width: 90%;
+    height: 30%;
+    padding: 1%;
+    color: variables.$blue-color;
+    font-size: 2em;
+  }
+
+  &__button--EngToMorse {
+    width: 140px;
+    height: 40px;
+    margin: 10px 0;
+    border: 3px solid variables.$beige-color;
+    background-color: variables.$blue-color;
+    color: variables.$beige-color;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 16px;
+
+    &:hover {
+      background-color: variables.$beige-color;
+      color: variables.$blue-color;
+    }
+  }
+
+  &__button--MorseToEng {
     width: 140px;
     height: 40px;
     margin: 10px 0;

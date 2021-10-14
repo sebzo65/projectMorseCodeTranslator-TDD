@@ -14,13 +14,20 @@
     </header>
     <section class="form">
       <h3 class="form__title">Translate a Message</h3>
-      <label for="form__input"></label>
+      <button class="form__button">Clear</button>
+      <label for="form__input--Eng"></label>
       <textarea
-        class="form__input"
-        placeholder="Type your message here: In English, or in Morse Code, using 
+        class="form__input--Eng"
+        placeholder="Type your message here: In English"
+      ></textarea>
+      <label for="form__input--Morse"></label>
+      <textarea
+        class="form__input--Morse"
+        placeholder="Type your message here: In Morse Code, using 
         '.', '-', separating letters with spaces, and words with '/'."
       ></textarea>
-      <button class="form__button">Translate</button>
+      <button class="form__button--EngToMorse">Eng-Morse</button>
+      <button class="form__button--MorseToEng">Morse-Eng</button>
       <label for="form__output"></label>
       <textarea class="form__output" disabled></textarea>
     </section>

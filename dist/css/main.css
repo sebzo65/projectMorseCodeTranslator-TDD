@@ -11,19 +11,31 @@
 .form__title {
   margin-bottom: 10px;
 }
-.form__input {
+.form__input--Eng {
   padding-left: 0;
   padding-top: 0;
   padding-bottom: 0.4em;
   padding-right: 0.4em;
   background-color: #f3e9d2;
   width: 90%;
-  height: 50%;
+  height: 30%;
   padding: 1%;
   color: #114b5f;
   font-size: 2em;
 }
-.form__button {
+.form__input--Morse {
+  padding-left: 0;
+  padding-top: 0;
+  padding-bottom: 0.4em;
+  padding-right: 0.4em;
+  background-color: #f3e9d2;
+  width: 90%;
+  height: 30%;
+  padding: 1%;
+  color: #114b5f;
+  font-size: 2em;
+}
+.form__button--EngToMorse {
   width: 140px;
   height: 40px;
   margin: 10px 0;
@@ -33,7 +45,21 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 16px;
 }
-.form__button:hover {
+.form__button--EngToMorse:hover {
+  background-color: #f3e9d2;
+  color: #114b5f;
+}
+.form__button--MorseToEng {
+  width: 140px;
+  height: 40px;
+  margin: 10px 0;
+  border: 3px solid #f3e9d2;
+  background-color: #114b5f;
+  color: #f3e9d2;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 16px;
+}
+.form__button--MorseToEng:hover {
   background-color: #f3e9d2;
   color: #114b5f;
 }

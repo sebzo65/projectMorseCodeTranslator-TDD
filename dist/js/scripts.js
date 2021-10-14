@@ -1,5 +1,4 @@
-//Object that maps all morse characters to Roman letters & common symbols
-const MORSE = {
+const ALPHABET = {
   a: ".-",
   b: "-...",
   c: "-.-.",
@@ -36,80 +35,89 @@ const MORSE = {
   8: "---..",
   9: "----.",
   0: "-----",
+  ".": ".-.-.-",
+  ",": "--..--",
+  "?": "..--..",
+  "'": ".----.",
+  "/": "-..-.",
+  "(": "-.--.",
+  ")": "-.--.-",
+  "&": ".-...",
+  ":": "---...",
+  ";": "-.-.-.",
+  "=": "-...-",
+  "+": ".-.-.",
+  "-": "-....-",
+  _: "..--.-",
+  '"': ".-..-.",
+  $: "...-..-",
+  "!": "-.-.--",
+  "@": ".--.-.",
+  " ": "/",
 };
 
-//Disable morse code for these characters
-// ".": ".-.-.-",
-// ",": "--..--",
-// "?": "..--..",
-// "'": ".----.",
-// "/": "-..-.",
-// "(": "-.--.",
-// ")": "-.--.-",
-// "&": ".-...",
-// ":": "---...",
-// ";": "-.-.-.",
-// "=": "-...-",
-// "+": ".-.-.",
-// "-": "-....-",
-// _: "..--.-",
-// '"': ".-..-.",
-// $: "...-..-",
-// "!": "-.-.--",
-// "@": ".--.-.",
-// " ": "/",
-
-//Function to reverse key/value pairs
-let reverseMorse = Object.assign(
+//Reverse keys and values in object above
+export const reverseObject = Object.assign(
   {},
-  ...Object.entries(MORSE).map(([a, b]) => ({ [b]: a }))
+  ...Object.entries(ALPHABET).map(([a, b]) => ({ [b]: a }))
 );
-console.log(reverseMorse);
+reverseObject["/"] = " ";
 
-//Function to decode morse code into English text
-const decodeMorse = (morseCode) => {
-  return morseCode
-    .split("   ") //Get word 3 spaces apart
-    .map((word) =>
-      word
-        .split(" ") //get character code 1 space apart
-        .map((character) => reverseMorse[character]) //decode Morse
-        .join("")
-    )
-    .join(" ") //Add spaces between words
-    .trim();
+console.log(reverseObject);
+
+//Function to convert English to Morse Code
+export const EngToMorse = (eng, ALPHABET) => {
+  let engInput = eng.value;
+
+  const letterArr = engInput.toLowerCase().split("");
+
+  const translatedEng = letterArr.map((n) => {
+    let m = Object.values(ALPHABET[`${n}`]).join("");
+    return m;
+  });
+
+  const morseResult = translatedEng.join(" ");
+
+  return morseResult;
 };
-console.log(decodeMorse(".... . -.--   .--- ..- -.. ."));
+//Function to convert Morse Code to English
+export const MorseToEng = (morse, reverseObject) => {
+  let morseInput = morse.value;
 
-//Call DOM for inputs
-const formInput = document.querySelector(".form__input");
-const formButton = document.querySelector(".form__button");
+  const morseArr = morseInput.split(" "); // array of letters
+
+  const translatedMorse = morseArr.map((n) => {
+    // every letter is changed into
+    let m = Object.values(reverseObject[`${n}`]).join(" ");
+    return m;
+  });
+
+  const engResult = translatedMorse.join("");
+
+  return engResult;
+};
+
+//Call DOM for input
+const buttonEngToMorse = document.querySelector(".form__button--EngToMorse");
+const buttonMorseToEng = document.querySelector(".form__button--MorseToEng");
 const formOutput = document.querySelector(".form__output");
+const inputEng = document.querySelector(".form__input--Eng");
+const inputMorse = document.querySelector(".form__input--Morse");
 
-formButton.addEventListener("click", (e) => {
-  let translateInput = formInput.innerHTML;
-  if (translateInput.includes("." && "-")) {
-    formOutput.value = decodeMorse(translateInput);
-  }
+//When clicking Eng to Morse button
+buttonEngToMorse.addEventListener("click", (event) => {
+  formOutput.value = EngToMorse(inputEng, ALPHABET);
 });
 
-//Function to decode English text into Morse Code
-const decodeEnglish = (text) => {
-  return text
-    .split(" / ") //Separate morse words with "/"
-    .map((word) =>
-      word
-        .split(" ") //get morse character 1 space apart
-        .map((character) => MORSE[character]) //decode Morse
-        .join("")
-    )
-    .join(" ") //Add spaces between words
-    .trim();
-};
-console.log(decodeEnglish("judy"));
+//When clicking Morse to Eng button
+buttonMorseToEng.addEventListener("click", (event) => {
+  formOutput.value = MorseToEng(inputMorse, reverseObject);
+});
 
-//Function to check whether first letter in input box is a roman letter
-//or a morse code character
-
-//Function to check that spacing between morse groups are either 3 or
-//7 characters long
+//Clear Button
+clearButton = document.querySelector(".form__button");
+clearButton.addEventListener("click", () => {
+  inputEng.value = null;
+  inputMorse.value = null;
+  formOutput.value = null;
+});
