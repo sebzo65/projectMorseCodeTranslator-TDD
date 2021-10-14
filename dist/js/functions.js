@@ -67,6 +67,15 @@ console.log(reverseObject);
 
 //Function to convert English to Morse Code
 export const EngToMorse = (eng, ALPHABET) => {
+  if (eng === "`" || eng === "&" || eng === "*") {
+    throw new Error(
+      "This character does not have a reference and cannot be translated"
+    );
+  } else if (eng === []) {
+    throw new Error("This is an invalid input");
+  }
+  //   else if (Object.keys(ALPHABET("s") === "s") && Object.keys(ALPHABET("@") === "@"))
+
   let engInput = eng.value;
 
   const letterArr = engInput.toLowerCase().split("");
@@ -82,6 +91,15 @@ export const EngToMorse = (eng, ALPHABET) => {
 };
 //Function to convert Morse Code to English
 export const MorseToEng = (morse, reverseObject) => {
+  if (morse === "`" || morse === "&" || morse === "*") {
+    throw new Error(
+      "This character does not have a reference and cannot be translated"
+    );
+  } else if (morse === []) {
+    throw new Error("This is an invalid input");
+  }
+  //   else if (Object.values(ALPHABET("...") === "...") && Object.values(ALPHABET("--..--") === "--..--"))
+
   let morseInput = morse.value;
 
   const morseArr = morseInput.split(" "); // array of letters

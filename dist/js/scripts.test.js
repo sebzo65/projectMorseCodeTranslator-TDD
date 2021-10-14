@@ -1,6 +1,3 @@
-import { expect } from "@jest/globals";
-import { describe } from "yargs";
-
 import {
   reverseObject,
   EngToMorse,
@@ -22,7 +19,7 @@ describe("EngToMorse & MorseToEng functions", () => {
     expect(() => EngToMorse("`", ALPHABET)).toThrowError(
       noTranslationAvailableError
     );
-    expect(() => MorseToEng("`", ALPHABET)).toThrowError(
+    expect(() => MorseToEng("`", reverseObject)).toThrowError(
       noTranslationAvailableError
     );
     expect(() => EngToMorse("&", ALPHABET)).toThrowError(
@@ -47,25 +44,23 @@ describe("EngToMorse & MorseToEng functions", () => {
   });
 });
 
-// //Check the types for the input and output values of the functions
-// describe("EngToMorse & MorseToEng functions", () => {
-//   test("Input is not a string or number or other valid character", () => {
-//     expect(() =>
-//       MorseToEng([1, 2, 3], ALPHABET).toThrowError(invalidInputError)
-//     );
-//     expect(() =>
-//       EngToMorse([1, 2, 3], ALPHABET).toThrowError(invalidInputError)
-//     );
-//     expect(() =>
-//       MorseToEng({ 1: M, 2: A, 3: R }, ALPHABET).toThrowError(invalidInputError)
-//     );
-//     expect(() =>
-//       EngToMorse({ 1: M, 2: A, 3: R }, ALPHABET).toThrowError(invalidInputError)
-//     );
-//   });
-
 //Check the types for the input and output values of the functions
 describe("EngToMorse & MorseToEng functions", () => {
+  test("Input is not a string or number or other valid character", () => {
+    expect(() =>
+      MorseToEng([1, 2, 3], ALPHABET).toThrowError(invalidInputError)
+    );
+    expect(() =>
+      EngToMorse([1, 2, 3], ALPHABET).toThrowError(invalidInputError)
+    );
+    // expect(() =>
+    //   MorseToEng({ 1: M, 2: A, 3: R }, ALPHABET).toThrowError(invalidInputError)
+    // );
+    // expect(() =>
+    //   EngToMorse({ 1: M, 2: A, 3: R }, ALPHABET).toThrowError(invalidInputError)
+    // );
+  });
+
   test("Output is a string", () => {
     expect(typeof MorseToEng("---...", ALPHABET)).toBe("string");
     expect(typeof EngToMorse("hello", ALPHABET)).toBe("string");
