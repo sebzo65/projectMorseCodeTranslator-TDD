@@ -1,21 +1,18 @@
 import { expect } from "@jest/globals";
 import { describe } from "yargs";
 
-/**
- * @jest-environment jsdom
- */
-
-test("use jsdom in this test file", () => {
-  const element = document.createElement("div");
-  expect(element).not.toBeNull();
-});
-import { reverseObject, EngToMorse, MorseToEng, ALPHABET } from "./scripts";
+import {
+  reverseObject,
+  EngToMorse,
+  MorseToEng,
+  ALPHABET,
+} from "./functions.js";
 
 //For the testing, write 1 describe block per function
 
 //Error messages
-const invalidInputError = newError("This is an invalid input");
-const noTranslationAvailableError = newError(
+const invalidInputError = new Error("This is an invalid input");
+const noTranslationAvailableError = new Error(
   "This character does not have a reference and cannot be translated"
 );
 
@@ -50,23 +47,25 @@ describe("EngToMorse & MorseToEng functions", () => {
   });
 });
 
+// //Check the types for the input and output values of the functions
+// describe("EngToMorse & MorseToEng functions", () => {
+//   test("Input is not a string or number or other valid character", () => {
+//     expect(() =>
+//       MorseToEng([1, 2, 3], ALPHABET).toThrowError(invalidInputError)
+//     );
+//     expect(() =>
+//       EngToMorse([1, 2, 3], ALPHABET).toThrowError(invalidInputError)
+//     );
+//     expect(() =>
+//       MorseToEng({ 1: M, 2: A, 3: R }, ALPHABET).toThrowError(invalidInputError)
+//     );
+//     expect(() =>
+//       EngToMorse({ 1: M, 2: A, 3: R }, ALPHABET).toThrowError(invalidInputError)
+//     );
+//   });
+
 //Check the types for the input and output values of the functions
 describe("EngToMorse & MorseToEng functions", () => {
-  test("Input is not a string or number or other valid character", () => {
-    expect(() =>
-      MorseToEng([1, 2, 3], ALPHABET).toThrowError(invalidInputError)
-    );
-    expect(() =>
-      EngToMorse([1, 2, 3], ALPHABET).toThrowError(invalidInputError)
-    );
-    expect(() =>
-      MorseToEng({ 1: M, 2: A, 3: R }, ALPHABET).toThrowError(invalidInputError)
-    );
-    expect(() =>
-      EngToMorse({ 1: M, 2: A, 3: R }, ALPHABET).toThrowError(invalidInputError)
-    );
-  });
-
   test("Output is a string", () => {
     expect(typeof MorseToEng("---...", ALPHABET)).toBe("string");
     expect(typeof EngToMorse("hello", ALPHABET)).toBe("string");
@@ -75,7 +74,7 @@ describe("EngToMorse & MorseToEng functions", () => {
   test("Translation between Morse and English is accurate and as expected", () => {
     expect(MorseToEng("-----", ALPHABET)).toBe(0);
     expect(EngToMorse("0", ALPHABET)).toBe("-----");
-    expect(MorseToEng(".---", ALPHABET)).toBe("j");
+    expect(MorseToEng(".---", ALPHABET)).toBe(j);
     expect(EngToMorse("j", ALPHABET)).toBe(".---");
   });
 });
@@ -83,7 +82,7 @@ describe("EngToMorse & MorseToEng functions", () => {
 //Check that output of reverseObject is accurate (i.e.That it switches the key/value pairs around)
 describe("reverseObject function", () => {
   test("Output of reverseObject function is as expected", () => {
-    expect(reverseObject({ a: b })).toBe({ b: a });
-    expect(reverseObject({ o: "---" })).toBe({ "---": o });
+    expect(reverseObject({ a: b }, ALPHABET)).toBe({ b: a });
+    expect(reverseObject({ o: "---" }, ALPHABET)).toBe({ "---": o });
   });
 });

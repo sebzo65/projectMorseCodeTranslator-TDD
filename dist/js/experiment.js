@@ -1,3 +1,5 @@
+import { reverseObject } from "./scripts";
+
 //Array that contains all letters of ENG alphabet and Numbers
 const ALPHABET = [
   "a",
@@ -160,7 +162,6 @@ const convertChar = (char, from, to) => {
   }
   return convertChar();
 };
-// console.log(convertChar("..", MORSE, ALPHABET));
 
 const MORSE = {
   ".-": "a",
